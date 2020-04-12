@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit} from '@angular/core';
 import {UserModel} from '../../../models/UserModel';
 
 @Component({
@@ -16,4 +16,7 @@ export class UserComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  actionWithUser(user: UserModel) {
+    console.log(user);
+  }
 }

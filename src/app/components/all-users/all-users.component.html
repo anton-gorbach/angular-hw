@@ -1,0 +1,10 @@
+<!--<ul>-->
+<!--  <li *ngFor="let u of users">-->
+<!--      {{u | json}} приводим к типу json-->
+<!--  </li>-->
+<!--</ul>-->
+
+<router-outlet></router-outlet>
+
+<app-user *ngFor="let su of users" [user]="su"></app-user>
+
