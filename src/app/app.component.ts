@@ -1,10 +1,1 @@
-import { Component } from '@angular/core';
-
-@Component({
-  selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
-})
-export class AppComponent {
-  title = 'angular-hw1-components';
-}
+import {Component} from '@angular/core';import {UserModel} from '../models/UserModel';import {UserService} from './services/user.service';import {PostModel} from '../models/PostModel';import {PostService} from './services/post.service';import {CommentModel} from '../models/CommentModel';import {CommentService} from './services/comment.service';@Component({  selector: 'app-root',  template: `<h1>{{msg}}</h1>    <app-user *ngFor="let u of users" [user]="u"></app-user>    <app-post *ngFor="let p of posts" [post]="p"></app-post>    <h2>Comments</h2>    <app-comment *ngFor="let c of comments" [comment]="c"></app-comment>  `,  styles: [`h1, h2 {    background: silver  }`]})export class AppComponent {  msg = 'Angular HW1 Components';  users: UserModel[];  posts: PostModel[];  comments: CommentModel[];  constructor(      private userService: UserService,      private postService: PostService,      private commentService: CommentService,    ) { // создаем объект userService ; private - инкапсуляция    this.greeting();    this.userService.getUsers().subscribe(value => this.users = value);    this.postService.getPosts().subscribe(value => this.posts = value);    this.commentService.getComments().subscribe(value => this.comments = value);  }  greeting() {    console.log('hello');  }}
